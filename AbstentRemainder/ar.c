@@ -39,10 +39,6 @@ int main()
             scanf("%ld", &a[k]);
         }
         *(c+i) = a;
-    }
-
-    for (i = 0; i < testCases; i++)
-    {
         int cont=0;
         long int* arr =*(c+i);
         for (k = 0; k < longCadaCaso[i]; k++)

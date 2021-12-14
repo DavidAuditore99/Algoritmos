@@ -32,9 +32,9 @@ int main(){
     int **arreglos = (int**)malloc(testCases*sizeof(int*));
     int i;
     int k;
+    int* numeros = (int*)malloc(testCases*sizeof(int));
     for ( i = 0; i < testCases; i++)
     {
-    int* numeros = (int*)malloc(testCases*sizeof(int));
         scanf(" %d %d %d",&nabs[0][i],&nabs[1][i],&nabs[2][i]);
         for ( k = 1; i <= nabs[0][i]; k++)
         {
@@ -44,11 +44,28 @@ int main(){
     }
     for ( i = 0; i < testCases; i++)
     {
-        if (nabs[0][i]-2 == nabs[1][i]+nabs[2][i])
+        if (nabs[0][i]-2 == nabs[1][i]+nabs[2][i] || (nabs[1][i]-nabs[2][i])>1 || (nabs[2][i]-nabs[1][i]) > 1)
         {
             printf("-1\n");
             continue;
         }
+        if (nabs[1][i]>nabs[2][i])
+        {
+            ordenarMaximos(numeros,nabs[1][i],testCases);
+            continue;
+        }
+        if (nabs[1][i]<nabs[2][i])
+        {
+            ordenarMinimos(numeros,nabs[2][i]);
+        }else{
+            ordenarMinimos(numeros,nabs[2][i]);
+            ordenarMaximos(numeros,nabs[1][i],testCases);
+        }
+        for ( k = 0; k < testCases; k++)
+        {
+            printf("%d ",numeros[k]);
+        }
+        
         
     }
     
